@@ -1,0 +1,8 @@
+<ion-toolbar color="white">
+  <ion-searchbar #searchBox (keyup)="search(searchBox.value)"></ion-searchbar>
+  <ion-buttons end (click)="add()">
+    <button ion-button large icon-only>
+      <ion-icon name="create"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-toolbar>
