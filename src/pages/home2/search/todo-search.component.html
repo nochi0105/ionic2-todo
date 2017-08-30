@@ -1,5 +1,5 @@
 <ion-toolbar color="white">
-  <ion-searchbar [placeholder]="'filter' | translate" #searchBox (keyup)="search(searchBox.value)"></ion-searchbar>
+  <ion-searchbar #searchBox (keyup)="search(searchBox.value)"></ion-searchbar>
   <ion-buttons end (click)="add()">
     <button ion-button large icon-only>
       <ion-icon name="create"></ion-icon>

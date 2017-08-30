@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{'Todo List' | translate}}</ion-title>
+    <ion-title>Todoリスト</ion-title>
   </ion-navbar>
 
   <app-todo-search [(term)]="term"></app-todo-search>
@@ -11,13 +11,13 @@
   <ion-toolbar>
     <ion-segment [(ngModel)]="currentList">
       <ion-segment-button value="getTodoItems" (click)="getTodoItems()">
-        {{'All' | translate}}
+        All
       </ion-segment-button>
       <ion-segment-button value="getFinishItems" (click)="getFinishItems()">
-        {{'Done' | translate}}
+        Done
       </ion-segment-button>
       <ion-segment-button value="getUnFinishItems" (click)="getUnFinishItems()">
-        {{'Undo' | translate}}
+        Undo
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>

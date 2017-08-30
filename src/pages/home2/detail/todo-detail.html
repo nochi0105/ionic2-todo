@@ -13,10 +13,10 @@
   <form (ngSubmit)="onSubmit(todoForm)" #todoForm="ngForm">
     <ion-list>
       <ion-item>
-        <ion-label color="primary">{{"Title" | translate}}</ion-label>
+        <ion-label color="primary">タイトル</ion-label>
         <ion-input
           type="text"
-          [placeholder]="'Title' | translate"
+          placeholder="タイトル"
           [(ngModel)]="todo.title"
           class="form-control"
           name="title"
@@ -32,7 +32,7 @@
           <ion-textarea
             cols="1"
             rows="5"
-            [placeholder]="'Input note' |  translate"
+            placeholder="メモを入力"
             name="text"
             [(ngModel)]="todo.text"
           >{{todo.text}}</ion-textarea>
@@ -60,8 +60,8 @@
 
     </ion-list>
     <ion-buttons *ngIf="platForm.is('core')">
-      <button ion-button outline round icon-start (click)="goBack()">{{"Go back" | translate}}</button>
-      <button ion-button round icon-end [disabled]="!todoForm.valid">{{"Save" | translate}}</button>
+      <button ion-button outline round icon-start (click)="goBack()">戻る</button>
+      <button ion-button round icon-end [disabled]="!todoForm.valid">保存する</button>
     </ion-buttons>
   </form>
 </ion-content>

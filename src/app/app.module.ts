@@ -9,55 +9,49 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
+import {Http, HttpModule} from "@angular/http";
 import {TimeComponent} from "../pages/home/time/time.component";
 import {TodoDetailComponent} from "../pages/home/detail/todo-detail.component";
-import {TodoSearchComponent} from "../pages/home/search/todo-search.component";
 import {ListenKeysDirective} from "../pages/home/directive/listen-keys.directive";
 import {KeyboardEventComponent} from "../pages/home/keyboard-event/keyboard-event.component";
 import {BSButtonDirective} from "../pages/home/directive/bs-button.directive";
-import {ValidatorComponent} from "../pages/home/validator/validator.component";
-import {TodoDonePipe} from "../pages/home/pipes/todo-done.pipe";
-import {TodoSearchService} from "../pages/home/search/todo-search.service";
-import {TodoService} from "../pages/home/todo.service";
+import {LoginPage} from "../pages/login/login";
+import {SignupPage} from "../pages/signup/signup";
+import {TranslateModule, TranslateStaticLoader, TranslateLoader} from 'ng2-translate';
+import {HomePageModule} from "../pages/home/home.module";
 
-import {FileChooser} from "@ionic-native/file-chooser";
-import { Camera } from '@ionic-native/camera';
-import { File } from '@ionic-native/file';
-import {FilePath} from "@ionic-native/file-path";
-import {OrderbyPipe} from "../pipes/orderby/orderby";
-
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, 'assets/i18n', '.json');
+}
 // ルーティング設定
 const appRoutes = {
   links: [
     { component: HomePage, name: 'Home', segment: '' },
     { component: TodoDetailComponent, name: 'TodoDetail', segment: 'todo-detail/:id' }, //一般的な指定
-    { component: ListPage, name: 'List', segment: 'list', defaultHistory: [HomePage]} //引数あり
+    { component: ListPage, name: 'List', segment: 'list', defaultHistory: [HomePage]}, //引数あり
+    { component: LoginPage, name: 'Login', segment: 'login'}, //引数あり
+    { component: SignupPage, name: 'Signup', segment: 'signup'} //引数あり
   ]
 };
 
 @NgModule({
   declarations: [
-    HomePage,
     ListPage,
     MyApp,
+    LoginPage,
+    SignupPage,
 
-    TodoDetailComponent,
-    TodoSearchComponent,
-    TodoDonePipe,
     TimeComponent,
-    ValidatorComponent,
-    BSButtonDirective,
     KeyboardEventComponent,
     ListenKeysDirective,
-
-    OrderbyPipe,
+    BSButtonDirective,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     IonicModule,
+    HomePageModule,
     IonicModule.forRoot(MyApp, {
       locationStrategy: "hash",
       // backButtonText: 'Go Back',
@@ -75,24 +69,23 @@ const appRoutes = {
       },
       pageTransition: 'ios-transition',
     }, appRoutes),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http],
+    })
   ],
   bootstrap: [IonicApp],
   // offline entry
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
-    TodoDetailComponent,
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    TodoService,
-    TodoSearchService,
-    Camera,
-    File,
-    FileChooser,
-    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ],
 })

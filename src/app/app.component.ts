@@ -5,9 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import {LoginPage} from "../pages/login/login";
+import {SignupPage} from "../pages/signup/signup";
+import { TranslateService } from 'ng2-translate/ng2-translate';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -16,15 +19,23 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public translate: TranslateService
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
+      { title: 'Login', component: LoginPage },
+      { title: 'Signup', component: SignupPage },
     ];
 
+    translate.setDefaultLang('ja');
   }
 
   initializeApp() {

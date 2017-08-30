@@ -50,7 +50,6 @@ export class HomePage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     private alertCtrl: AlertController,
-    private translate: TranslateService
   ) { }
 
   /**
@@ -65,17 +64,20 @@ export class HomePage implements OnInit {
     let message = [];
     todoItems.forEach(todo => message.push(todo.title));
     let alert = this.alertCtrl.create({
-      title: this.translate.instant("Confirm to delete !"),
+      title: '削除確認',
       message: message.join('\n'),
       buttons: [
         {
-          text: this.translate.instant("Cancel"),
+          text: 'キャンセル',
           role: 'cancel',
-          handler: () => { }
+          handler: () => {
+            console.log('Cancel clicked');
+          }
         },
         {
-          text: this.translate.instant("Delete"),
+          text: '削除',
           handler: () => {
+            console.log('削除 clicked');
             todoItems.forEach(todo => this.deleteItem(todo));
           }
         }

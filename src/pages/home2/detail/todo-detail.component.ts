@@ -10,7 +10,6 @@ import {FileChooser} from "@ionic-native/file-chooser";
 import {FilePath} from "@ionic-native/file-path";
 import {NgForm} from "@angular/forms";
 import { LoadingController } from 'ionic-angular';
-import {TranslateService} from "ng2-translate";
 
 @Component({
   selector: 'todo-detail',
@@ -33,8 +32,7 @@ export class TodoDetailComponent implements OnInit {
     private fileChooser: FileChooser,
     private filePath: FilePath,
     public actionSheetCtrl: ActionSheetController,
-    public loadingCtrl: LoadingController,
-    private translate: TranslateService
+    public loadingCtrl: LoadingController
   ) {
     const id = parseInt(this.navParams.get('id'));
     if (id) {
@@ -48,21 +46,21 @@ export class TodoDetailComponent implements OnInit {
 
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: this.translate.instant('Modify your album'),
+      title: 'Modify your album',
       buttons: [
         {
-          text: this.translate.instant('From Library'),
+          text: 'ライブラリから選択',
           role: 'destructive',
           handler: () => {
             this.fileChoose();
           }
         },{
-          text: this.translate.instant('Take a picture'),
+          text: '写真を撮る',
           handler: () => {
             this.takePhoto();
           }
         },{
-          text: this.translate.instant('Cancel'),
+          text: 'キャンセル',
           role: 'cancel',
           handler: () => {
           }

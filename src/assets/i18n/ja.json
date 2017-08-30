@@ -1,0 +1,21 @@
+{
+  "Home": "ホーム",
+  "List": "リスト",
+  "Login": "ログイン",
+  "Signup": "サインアップ",
+  "All": "すべて",
+  "Done": "完了",
+  "Undo": "未完了",
+  "Todo List": "Todoリスト",
+  "Confirm to delete !": "削除削除",
+  "Cancel": "キャンセル",
+  "Delete": "削除",
+  "Title": "タイトル",
+  "Input note": "メモを入力",
+  "Go back": "戻る",
+  "Save": "保存する",
+  "Modify your album": "選択ください",
+  "From Library": "ライブラリから選択",
+  "Take a picture": "写真撮る",
+  "filter": "フィルター"
+}
