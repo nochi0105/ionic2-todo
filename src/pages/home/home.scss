@@ -6,7 +6,10 @@ page-home {
   cursor: pointer;
 }
 .active {
-  background-color: rgba(48, 48, 48, 0.8);
+  background-color: rgba(48, 48, 48, 0.8) !important;
+}
+.active>.item {
+  background-color: rgba(48, 48, 48, 0.8) !important;
 }
 .row.selected {
   background-color: #c4cdd4;

@@ -76,7 +76,7 @@ export class HomePage implements OnInit {
         {
           text: this.translate.instant("Delete"),
           handler: () => {
-            todoItems.forEach(todo => this.deleteItem(todo));
+            this.service.deleteAll(todoItems).then(()=>this.ngOnInit());
           }
         }
       ]
@@ -178,9 +178,8 @@ export class HomePage implements OnInit {
       .forEach(todo => {
         todo.done = true;
         todo.is_checked = false;
-        this.service.update(todo);
       });
-    this.list_hold = false;
+    this.service.updateAll(this.todoItems).then(()=>this.ngOnInit());
     this.cancel();
   }
 
@@ -193,8 +192,8 @@ export class HomePage implements OnInit {
       .forEach(todo => {
         todo.done = false;
         todo.is_checked = false;
-        this.service.update(todo);
       });
+    this.service.updateAll(this.todoItems).then(()=>this.ngOnInit());
     this.cancel();
   }
 
@@ -207,6 +206,7 @@ export class HomePage implements OnInit {
       });
 
     this.presentConfirm(checkedTodoItems);
+    this.ngOnInit();
     this.cancel();
   }
 

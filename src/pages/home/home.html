@@ -53,9 +53,9 @@
     </ion-item-sliding>
 
     <div *ngIf="list_hold">
-      <button class="pull-right btn-sm" appBSButton (click)="allDone()">Done</button>
-      <button class="pull-right btn-sm" appBSButton="warning" (click)="allUndo()">Undo</button>
-      <button class="pull-right btn-sm" appBSButton="danger" (click)="allDelete()">Delete</button>
+      <button ion-button color="secondary"  (click)="allDone()">Done</button>
+      <button ion-button (click)="allUndo()">Undo</button>
+      <button ion-button color="danger" (click)="allDelete()">Delete</button>
     </div>
   </ion-list>
 </ion-content>

@@ -82,7 +82,6 @@ export class TodoDetailComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(this.todoForm);
     this.submitted = true;
     if (form.valid) {
       this.service.update(this.todo)

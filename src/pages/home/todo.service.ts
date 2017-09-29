@@ -51,6 +51,17 @@ export class TodoService {
     ).catch(this.handleError);
   }
 
+  deleteAll(todoItems: Todo[]): Promise<Todo[]> {
+
+    return Promise.resolve(
+      this.getTodoItems().then(current_todoItems => {
+        const newTodoItems = current_todoItems.filter(todo => todoItems.find(t => t === todo));
+        localStorage.setItem(this.key, JSON.stringify(newTodoItems));
+        return newTodoItems;
+      })
+    ).catch(this.handleError);
+  }
+
   update(todo: Todo): Promise<Todo> {
     return Promise.resolve(
       this.getTodoItems()
@@ -61,6 +72,16 @@ export class TodoService {
           return todo;
         })
 
+    ).catch(this.handleError);
+  }
+
+  updateAll(todoItems: Todo[]): Promise<Todo[]> {
+    return Promise.resolve(
+      this.getTodoItems().then(current_todoItems => {
+        const newTodoItems = Object.assign(current_todoItems, todoItems);
+        localStorage.setItem(this.key, JSON.stringify(newTodoItems));
+        return newTodoItems;
+      })
     ).catch(this.handleError);
   }
 

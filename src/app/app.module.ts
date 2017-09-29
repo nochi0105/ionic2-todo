@@ -19,7 +19,6 @@ import {LoginPage} from "../pages/login/login";
 import {SignupPage} from "../pages/signup/signup";
 import {TranslateModule, TranslateStaticLoader, TranslateLoader} from 'ng2-translate';
 import {HomePageModule} from "../pages/home/home.module";
-
 export function createTranslateLoader(http: Http) {
     return new TranslateStaticLoader(http, 'assets/i18n', '.json');
 }
